@@ -3,7 +3,7 @@
 ###
 FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
-ARG GRAAL_VERSION=19.0.2
+ARG GRAAL_VERSION=19.1.1
 ARG MAVEN_VERSION=3.6.1
 
 ENV GRAAL_CE_URL=https://github.com/oracle/graal/releases/download/vm-${GRAAL_VERSION}/graalvm-ce-linux-amd64-${GRAAL_VERSION}.tar.gz
