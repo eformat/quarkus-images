@@ -3,7 +3,7 @@
 ###
 FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
-ARG GRAAL_VERSION=19.1.1
+ARG GRAAL_VERSION=19.2.1
 ARG MAVEN_VERSION=3.6.1
 
 ENV GRAAL_CE_URL=https://github.com/oracle/graal/releases/download/vm-${GRAAL_VERSION}/graalvm-ce-linux-amd64-${GRAAL_VERSION}.tar.gz
@@ -31,9 +31,7 @@ RUN microdnf -y update && \
      mkdir -p ${GRAALVM_HOME} && \
      cd ${GRAALVM_HOME} && \
      curl -fsSL $GRAAL_CE_URL | tar -xzC ${GRAALVM_HOME} --strip-components=1 && \
-#COPY native-image-installable-svm-linux-amd64-19.0.2.jar ${GRAALVM_HOME}/native-image-installable-svm-linux-amd64-19.0.2.jar
-#RUN     /opt/graalvm/bin/gu -L install ${GRAALVM_HOME}/native-image-installable-svm-linux-amd64-19.0.2.jar && rm -f ${GRAALVM_HOME}/native-image-installable-svm-linux-amd64-19.0.2.jar
-    /opt/graalvm/bin/gu install native-image && \
+     /opt/graalvm/bin/gu install native-image && \
      ### User management
      adduser -u 1001 -g 0 quarkus --home-dir ${QUARKUS_HOME} && \
      chown -R 1001:0 ${QUARKUS_HOME} && \
